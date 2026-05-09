@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pizzaria Oliveira — tradição em forno a lenha em Trizidela do Vale - MA. Peça online pelo cardápio digital, conheça nossos sabores e venha viver essa experiência." />
+  <title>Pizzaria Oliveira — Trizidela do Vale - MA · Forno a lenha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============ BARRA DE PROGRESSO DO SCROLL ============ -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" id="navbar">
+    <nav class="navbar__inner container">
+      <a href="#top" class="logo" aria-label="Pizzaria Oliveira — desde 2017">
+        <img src="assets/logo.png" alt="Pizzaria Oliveira" class="logo__img" width="220" height="128" />
+      </a>
+
+      <ul class="navbar__menu" id="menu">
+        <li><a href="#sobre">Sobre nós</a></li>
+        <li><a href="#cardapio">Cardápio</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#visite">Visite</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li class="navbar__menu-cta"><a href="https://wa.me/5599985093705" target="_blank" rel="noopener">Peça aqui</a></li>
+      </ul>
+
+      <a href="https://wa.me/5599985093705" target="_blank" rel="noopener" class="btn btn--primary btn--sm navbar__cta">Peça aqui</a>
+
+      <button class="navbar__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Scrim para fechar menu mobile clicando fora -->
+  <div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top" data-scroll-section>
+    <div class="hero__bg" aria-hidden="true" data-parallax></div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <div class="container hero__content">
+      <span class="hero__kicker">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Trizidela do Vale · Maranhão
+      </span>
+
+      <h1 class="hero__title">
+        A pizza que virou
+        <em>tradição</em>
+        em Trizidela do Vale e região.
+      </h1>
+
+      <p class="hero__lead">
+        Mais de 30 sabores preparados na hora, ingredientes selecionados e a confiança
+        de quem atende a região desde 2017. Peça em minutos pelo cardápio digital
+        ou direto no WhatsApp.
+      </p>
+
+      <div class="hero__ctas">
+        <a href="https://pizzariaoliveira.online/" target="_blank" rel="noopener" class="btn btn--primary">
+          Peça pelo cardápio digital
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://wa.me/5599985093705" target="_blank" rel="noopener" class="btn btn--ghost-light">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.18 6.42 2.18 11.85a9.78 9.78 0 0 0 1.32 4.94L2 22l5.34-1.4a9.83 9.83 0 0 0 4.7 1.2h.01c5.43 0 9.85-4.42 9.85-9.85 0-2.63-1.02-5.1-2.85-6.94zM12.05 20.13a8.18 8.18 0 0 1-4.18-1.14l-.3-.18-3.17.83.85-3.09-.2-.32a8.18 8.18 0 0 1-1.25-4.38c0-4.52 3.68-8.2 8.21-8.2 2.19 0 4.25.86 5.8 2.4a8.13 8.13 0 0 1 2.4 5.8c0 4.52-3.68 8.2-8.16 8.28z"/></svg>
+          Pedir no WhatsApp
+        </a>
+      </div>
+
+      <div class="hero__trust">
+        <div class="hero__rating" aria-label="5 estrelas">
+          <span class="stars">★★★★★</span>
+          <span>Avaliada por clientes em toda a região</span>
+        </div>
+      </div>
+
+      <ul class="hero__stats">
+        <li>
+          <strong>2017</strong>
+          <span>ano de fundação</span>
+        </li>
+        <li>
+          <strong>30<sup>+</sup></strong>
+          <span>sabores no cardápio</span>
+        </li>
+        <li>
+          <strong>16h30 — 23h</strong>
+          <span>todos os dias, sem exceção</span>
+        </li>
+      </ul>
+    </div>
+
+    <a href="#sobre" class="hero__scroll" aria-label="Rolar para baixo">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- ============ SOBRE ============ -->
+  <section class="section section--sobre" id="sobre">
+    <div class="container">
+      <div class="sobre__grid">
+        <div class="sobre__text">
+          <span class="eyebrow">Nossa história</span>
+          <h2 class="section__title">De um sonho dentro de casa à pizzaria mais querida da região.</h2>
+
+          <p>
+            A Pizzaria Oliveira nasceu de um sonho simples, mas cheio de coragem.
+            Fundada em <strong>2 de junho de 2017</strong> por <strong>Wladimir Oliveira</strong>,
+            tudo começou dentro da própria residência da família, no Bairro Aeroporto.
+            Com apenas <strong>R$ 980,00 de rescisão</strong>, Wladimir investiu quase
+            todo o valor em um pequeno forno comprado pela internet — e, com o que
+            sobrou e mais um empréstimo, montou uma bancada simples, comprou ingredientes
+            e alugou um freezer. Surgia ali o primeiro passo de uma grande história.
+          </p>
+          <p>
+            A primeira pizza foi vendida para um cliente de <strong>Bernardo do Mearim</strong>
+            que passava pela cidade e viu o anúncio da inauguração. O que começou como
+            renda extra rapidamente conquistou as pessoas pelo sabor, pela dedicação e
+            pelo carinho em cada pizza preparada.
+          </p>
+          <p>
+            Três meses depois, a pizzaria se mudou para o endereço onde permanece até
+            hoje, na <strong>Rua da Salvação</strong>, em Trizidela do Vale. Desde
+            então, a história foi construída principalmente pelo boca a boca —
+            clientes que acreditaram no projeto e ajudaram a espalhar a marca pela região.
+          </p>
+          <p>
+            Hoje atendemos <strong>Pedreiras</strong>, <strong>Trizidela do Vale</strong>
+            e cidades vizinhas, recebendo também visitantes de Bernardo do Mearim e
+            Bacabal que passam pela cidade para saborear nossas pizzas. Uma trajetória
+            marcada por <em>fé, trabalho e gratidão</em> a todos que fizeram parte
+            dessa caminhada.
+          </p>
+        </div>
+
+        <div class="sobre__media">
+          <figure class="sobre__photo sobre__photo--portrait">
+            <img src="assets/WhatsApp%20Image%202026-05-09%20at%2020.08.55.jpeg"
+                 alt="Wladimir, fundador da Pizzaria Oliveira, girando a massa de pizza no ar"
+                 loading="lazy" decoding="async" />
+          </figure>
+          <span class="sobre__badge" aria-hidden="true">desde<br /><b>2017</b></span>
+        </div>
+      </div>
+
+      <figure class="sobre__photo sobre__photo--wide">
+        <img src="assets/WhatsApp%20Image%202026-05-09%20at%2020.08.52.jpeg"
+             alt="Equipe da Pizzaria Oliveira reunida em frente ao painel da marca"
+             loading="lazy" decoding="async" />
+        <figcaption>Nossa equipe — quem prepara cada pizza com carinho.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ CARDÁPIO ============ -->
+  <section class="section section--cardapio" id="cardapio">
+    <div class="container cardapio__inner">
+      <header class="section__header">
+        <span class="eyebrow">Cardápio</span>
+        <h2 class="section__title">Mais de 30 sabores esperando por você.</h2>
+        <p class="section__sub">
+          Tradicionais, especiais e doces — preparados na hora, com qualidade a preço justo.
+          Confira o cardápio completo e faça seu pedido online.
+        </p>
+      </header>
+
+      <div class="cardapio__cta">
+        <a href="https://pizzariaoliveira.online/" target="_blank" rel="noopener" class="btn btn--primary">Ver cardápio completo</a>
+        <a href="https://wa.me/5599985093705" target="_blank" rel="noopener" class="btn btn--outline">Pedir pelo WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DEPOIMENTOS ============ -->
+  <section class="section section--dep" id="depoimentos">
+    <div class="container">
+      <header class="section__header">
+        <span class="eyebrow">Depoimentos</span>
+        <h2 class="section__title">O que dizem quem já provou.</h2>
+        <p class="section__sub">Histórias reais de clientes que fazem parte da nossa caminhada.</p>
+      </header>
+
+      <div class="grid grid--cards-3">
+
+        <article class="quote">
+          <span class="quote__mark" aria-hidden="true">“</span>
+          <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
+          <p>Simplesmente apaixonada pela pizza da Pizzaria Oliveira. O sabor é incrível, massa no ponto perfeito, recheio bem caprichado e ingredientes de ótima qualidade. Dá pra sentir o cuidado em cada detalhe — sem dúvida, uma das melhores pizzas que já provei. Super recomendo, principalmente a de filé com alho.</p>
+          <div class="quote__author">
+            <strong>Wandelya Jamylle</strong>
+            <span>Cliente · Trizidela do Vale - MA</span>
+          </div>
+        </article>
+
+        <article class="quote">
+          <span class="quote__mark" aria-hidden="true">“</span>
+          <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
+          <p>Sou cliente fiel desde 2019 e acompanho a evolução dessa pizzaria com muito carinho. Nossa relação ficou ainda mais próxima no final de 2020, quando passei a morar na mesma rua. Hoje, além de vizinha, sou fã do atendimento e da rapidez: minha pizza chega sempre quentinha na porta de casa. Já confiei até para celebrar o aniversário do meu filho — recomendo de olhos fechados.</p>
+          <div class="quote__author">
+            <strong>Cliente fiel · desde 2019</strong>
+            <span>Vizinha · Rua da Salvação</span>
+          </div>
+        </article>
+
+        <article class="quote">
+          <span class="quote__mark" aria-hidden="true">“</span>
+          <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
+          <p>Pedi pela primeira vez por indicação e virei cliente. A massa é fininha do jeito certo, o recheio sempre vem caprichado e o atendimento no WhatsApp é rápido — pedido em minutos. Já experimentei vários sabores e a calabresa virou tradição lá em casa nos fins de semana. Pizza honesta, com sabor de família.</p>
+          <div class="quote__author">
+            <strong>Felipe Dublin</strong>
+            <span>Cliente · Pedreiras - MA</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VISITE / CTA ============ -->
+  <section class="section section--cta" id="visite">
+    <div class="container cta__inner">
+      <div class="cta__text">
+        <span class="eyebrow eyebrow--light">Venha nos visitar</span>
+        <h2>Uma noite em família começa com uma pizza no forno a lenha.</h2>
+        <p>Encomendas e delivery: atendemos todos os dias, das 16h30 às 23h, em Trizidela do Vale e região.</p>
+        <div class="cta__buttons">
+          <a href="https://pizzariaoliveira.online/" target="_blank" rel="noopener" class="btn btn--white">Cardápio digital</a>
+          <a href="https://wa.me/5599985093705" target="_blank" rel="noopener" class="btn btn--ghost-light">Pedir delivery</a>
+        </div>
+      </div>
+      <div class="cta__media" aria-hidden="true">
+        <div style="background-image:url('https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?auto=format&fit=crop&w=900&q=80')"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTATO ============ -->
+  <section class="section section--contato" id="contato">
+    <div class="container">
+      <header class="section__header">
+        <span class="eyebrow">Fale conosco</span>
+        <h2 class="section__title">A casa está aberta. Venha provar.</h2>
+        <p class="section__sub">
+          Reservas, encomendas ou só uma curiosidade — estamos a um clique de distância.
+        </p>
+      </header>
+
+      <ul class="info-grid" data-stagger>
+        <li class="info-card">
+          <span class="info-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <h3>Endereço</h3>
+          <p>Rua da Salvação, 665 — Bairro Jerusalém<br />Trizidela do Vale — MA</p>
+        </li>
+        <li class="info-card">
+          <span class="info-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <h3>Telefone</h3>
+          <p>
+            <a href="tel:+5599985093705">(99) 98509-3705</a><br />
+            <a href="tel:+5599985009630">(99) 98500-9630</a>
+          </p>
+        </li>
+        <li class="info-card">
+          <span class="info-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </span>
+          <h3>Horário</h3>
+          <p>Todos os dias<br />16h30 às 23h</p>
+        </li>
+        <li class="info-card">
+          <span class="info-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </span>
+          <h3>Cardápio digital</h3>
+          <p><a href="https://pizzariaoliveira.online/" target="_blank" rel="noopener">pizzariaoliveira.online</a></p>
+        </li>
+      </ul>
+
+      <div class="contato__ctas">
+        <a href="https://pizzariaoliveira.online/" class="btn btn--primary" target="_blank" rel="noopener">
+          Peça pelo cardápio digital
+        </a>
+        <a href="https://wa.me/5599985093705" class="btn btn--outline" target="_blank" rel="noopener">
+          Pedir pelo WhatsApp
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Pizzaria+Oliveira+Rua+da+Salvação+665+Trizidela+do+Vale+MA" class="btn btn--outline" target="_blank" rel="noopener">
+          Como chegar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="#top" class="logo logo--footer">
+          <img src="assets/logo.png" alt="Pizzaria Oliveira" class="logo__img" width="260" height="151" />
+        </a>
+        <p>Qualidade a preço justo desde 2017, no coração de Trizidela do Vale - MA.</p>
+      </div>
+
+      <div>
+        <h4>Navegar</h4>
+        <ul>
+          <li><a href="#sobre">Sobre nós</a></li>
+          <li><a href="#cardapio">Cardápio</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Atendimento</h4>
+        <ul>
+          <li>Todos os dias · 16h30–23h</li>
+          <li>(99) 98509-3705</li>
+          <li>(99) 98500-9630</li>
+          <li>Rua da Salvação, 665 — Bairro Jerusalém</li>
+          <li>Trizidela do Vale — MA</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Online</h4>
+        <ul class="footer__social">
+          <li><a href="https://www.instagram.com/pizzaria_oliveira13/" target="_blank" rel="noopener" aria-label="Instagram">Instagram @pizzaria_oliveira13</a></li>
+          <li><a href="https://lkpro.site/pizzariaoliveira" target="_blank" rel="noopener" aria-label="Vitrine digital">Vitrine digital (link da bio)</a></li>
+          <li><a href="https://pizzariaoliveira.online/" target="_blank" rel="noopener" aria-label="Cardápio digital">Cardápio digital</a></li>
+          <li><a href="https://wa.me/5599985093705" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <span>© 2026 Pizzaria Oliveira — Trizidela do Vale - MA · Todos os direitos reservados.</span>
+    </div>
+  </footer>
+
+  <!-- ============ WHATSAPP FLUTUANTE ============ -->
+  <a href="https://wa.me/5599985093705" class="wa-float" aria-label="Falar no WhatsApp" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true">
+      <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.18 6.42 2.18 11.85a9.78 9.78 0 0 0 1.32 4.94L2 22l5.34-1.4a9.83 9.83 0 0 0 4.7 1.2h.01c5.43 0 9.85-4.42 9.85-9.85 0-2.63-1.02-5.1-2.85-6.94zM12.05 20.13h-.01a8.18 8.18 0 0 1-4.17-1.14l-.3-.18-3.17.83.85-3.09-.2-.32a8.18 8.18 0 0 1-1.25-4.38c0-4.52 3.68-8.2 8.21-8.2 2.19 0 4.25.86 5.8 2.4a8.13 8.13 0 0 1 2.4 5.8c0 4.52-3.68 8.2-8.16 8.28zm4.5-6.13c-.25-.13-1.46-.72-1.69-.8-.23-.08-.39-.13-.56.13s-.64.8-.79.97c-.14.16-.29.18-.54.06-.25-.13-1.04-.38-1.99-1.22-.74-.66-1.23-1.47-1.37-1.72-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48c-.16 0-.42.06-.64.31-.22.25-.84.83-.84 2.02 0 1.19.86 2.34.98 2.5.13.16 1.7 2.6 4.13 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.46-.6 1.66-1.18.21-.58.21-1.07.14-1.18-.06-.11-.23-.18-.48-.31z"/>
+    </svg>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>

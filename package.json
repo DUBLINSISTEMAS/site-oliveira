@@ -1,0 +1,17 @@
+{
+  "name": "pizzaria-oliveira",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Landing page da Pizzaria Oliveira — Trizidela do Vale - MA · Desde 2017.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "pdf-to-img": "^6.0.0",
+    "sharp": "^0.34.5",
+    "vite": "^5.4.10"
+  }
+}

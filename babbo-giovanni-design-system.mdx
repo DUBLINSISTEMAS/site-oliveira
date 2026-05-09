@@ -1,0 +1,727 @@
+---
+title: "Engenharia Reversa — Babbo Giovanni Landing Page"
+source: "https://www.babbogiovanni.com.br/"
+date: "2026-05-04"
+description: "Documentação completa para recriar exatamente o design da landing page da Babbo Giovanni, incluindo design system, tipografia, layout, componentes e tokens."
+---
+
+# Engenharia Reversa — Babbo Giovanni
+
+> Pizzaria histórica de São Paulo (desde 1917). A landing page combina identidade italiana clássica (vermelho/preto/branco) com tipografia moderna sans-serif e seções de storytelling, cardápio, depoimentos e franquias.
+
+---
+
+## 1. Design System
+
+A paleta segue a identidade visual tradicional da marca: vermelho italiano forte como cor primária, preto/cinza-escuro como fundo dominante e branco para contraste. Tons de cinza intermediários estruturam superfícies e formulários.
+
+### 1.1 Paleta de Cores
+
+| Token | Hex | RGB | HSL | Uso |
+|-------|-----|-----|-----|-----|
+| **Primary / Brand Red** | `#BE1522` | `rgb(190, 21, 34)` | `hsl(356, 80%, 41%)` | CTA, bordas, hover, destaques |
+| **Brand Red Dark** | `#8E0F19` | `rgb(142, 15, 25)` | `hsl(356, 81%, 31%)` | Hover do CTA principal |
+| **Background Black** | `#171717` | `rgb(23, 23, 23)` | `hsl(0, 0%, 9%)` | Fundo geral, header, footer |
+| **Surface Dark** | `#454545` | `rgb(69, 69, 69)` | `hsl(0, 0%, 27%)` | Fundo de formulários e cards escuros |
+| **Surface Mid** | `#2A2A2A` | `rgb(42, 42, 42)` | `hsl(0, 0%, 16%)` | Subseções, divisores |
+| **Text Primary** | `#FFFFFF` | `rgb(255, 255, 255)` | `hsl(0, 0%, 100%)` | Títulos e corpo sobre fundo escuro |
+| **Text Muted** | `#CCCCCC` | `rgb(204, 204, 204)` | `hsl(0, 0%, 80%)` | Textos secundários |
+| **Text Subtle** | `#888888` | `rgb(136, 136, 136)` | `hsl(0, 0%, 53%)` | Legendas, metadata |
+| **Border Light** | `rgba(255,255,255,0.1)` | — | — | Divisores sutis |
+| **Success Green** | `#28A745` | `rgb(40, 167, 69)` | `hsl(134, 61%, 41%)` | Confirmações, edição |
+| **Danger Red** | `#D9534F` | `rgb(217, 83, 79)` | `hsl(2, 64%, 58%)` | Exclusão, alertas |
+| **Focus Blue** | `#2196F3` | `rgb(33, 150, 243)` | `hsl(207, 90%, 54%)` | Estados de foco em inputs (admin) |
+| **WhatsApp Green** | `#25D366` | `rgb(37, 211, 102)` | `hsl(142, 70%, 49%)` | Botão flutuante WhatsApp |
+
+### 1.2 Cores Semânticas
+
+```
+Primária:    #BE1522  (vermelho Babbo)
+Secundária:  #171717  (preto)
+Background:  #171717  (preto profundo)
+Surface:     #454545  (cinza escuro)
+Texto:       #FFFFFF  (branco)
+Texto-2:     #CCCCCC  (cinza claro)
+Acento:      #BE1522
+```
+
+### 1.3 Gradientes
+
+```css
+/* Overlay padrão usado sobre imagens hero (escurecimento) */
+background: linear-gradient(
+  180deg,
+  rgba(0, 0, 0, 0.2) 0%,
+  rgba(0, 0, 0, 0.85) 100%
+);
+
+/* Vinheta lateral em banners */
+background: linear-gradient(
+  90deg,
+  rgba(23, 23, 23, 0.9) 0%,
+  rgba(23, 23, 23, 0) 60%
+);
+
+/* Gradiente vermelho de destaque (CTA opcional) */
+background: linear-gradient(
+  135deg,
+  #BE1522 0%,
+  #8E0F19 100%
+);
+
+/* Gradiente herdado do tema WP (presets disponíveis) */
+background: linear-gradient(135deg, rgba(6,147,227,1) 0%, rgb(155,81,224) 100%);
+```
+
+### 1.4 Opacidades & Variações
+
+```css
+--red-90: rgba(190, 21, 34, 0.9);
+--red-50: rgba(190, 21, 34, 0.5);
+--red-20: rgba(190, 21, 34, 0.2);
+--red-glow: rgba(245, 54, 0, 0.5);   /* glow de focus */
+--black-85: rgba(0, 0, 0, 0.85);
+--black-50: rgba(0, 0, 0, 0.5);
+--black-10: rgba(0, 0, 0, 0.1);       /* shadows */
+--white-10: rgba(255, 255, 255, 0.1); /* divisores */
+--white-60: rgba(255, 255, 255, 0.6); /* legendas */
+```
+
+---
+
+## 2. Tipografia
+
+A página usa a família **Halcom** (sans-serif geométrica) como tipo principal, com fallback para system-fonts. Combina pesos `300–700` para criar hierarquia clara entre títulos impactantes e corpo legível.
+
+### 2.1 Família e Fallbacks
+
+```css
+--font-sans: "Halcom", -apple-system, BlinkMacSystemFont,
+             "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+--font-display: "Halcom", "Halcom Bold", sans-serif;
+```
+
+### 2.2 Escala Tipográfica
+
+| Token | Tamanho | Peso | Line-height | Letter-spacing | Uso |
+|-------|--------:|-----:|------------:|---------------:|-----|
+| Display | `clamp(48px, 6vw, 72px)` | 700 | `1.1` | `-0.02em` | Título Hero |
+| H1 | `42px` | 700 | `1.15` | `-0.01em` | Título de seção principal |
+| H2 | `36px` | 600 | `1.2` | `-0.01em` | Títulos de seção |
+| H3 | `28px` | 600 | `1.25` | `0` | Subtítulos / cards |
+| H4 | `22px` | 600 | `1.3` | `0` | Títulos menores |
+| H5 | `20px` | 500 | `1.35` | `0` | Labels destacados |
+| Body L | `18px` | 400 | `1.6` | `0` | Lead, texto introdutório |
+| Body | `16px` | 400 | `1.6` | `0` | Texto padrão |
+| Body S | `14px` | 400 | `1.5` | `0.01em` | Legendas, metadata |
+| Caption | `13px` | 400 | `1.4` | `0.02em` | Microcopy, footer |
+| Eyebrow | `13px` | 600 | `1.2` | `0.15em` (uppercase) | Rótulos acima de títulos |
+
+### 2.3 Estilos Comuns
+
+```css
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #BE1522;
+}
+
+.hero-title {
+  font-family: "Halcom", sans-serif;
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+.body-lead {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #CCCCCC;
+}
+```
+
+---
+
+## 3. Layout
+
+A página é montada em blocos verticais full-bleed, cada um com um container central limitado. A estrutura herda convenções do WordPress (`wp-site-blocks`, `is-layout-flex`, `is-layout-grid`).
+
+### 3.1 Containers
+
+| Token | Largura | Uso |
+|-------|--------:|-----|
+| `--content-size` | `800px` | Blocos de texto/conteúdo padrão |
+| `--wide-size` | `1200px` | Seções com mídia, cards, grids |
+| `--form-size` | `600px` | Formulários centralizados |
+| Full bleed | `100vw` | Background de seções |
+
+### 3.2 Grid & Flex
+
+- **Grid principal**: CSS Grid com `gap: 24px`, colunas auto-fit ao redor de `minmax(260px, 1fr)` em listagens de produtos.
+- **Hero**: flex column centralizado verticalmente, `min-height: 90vh`.
+- **Cards de produto**: grid 3 colunas em desktop, 2 em tablet, 1 em mobile.
+- **Depoimentos**: grid 3 colunas em desktop, scroll horizontal em mobile.
+
+```css
+.section {
+  width: 100%;
+  padding-block: clamp(64px, 8vw, 120px);
+}
+.container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 32px);
+}
+.grid-cards {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+```
+
+### 3.3 Espaçamento (escala 4px)
+
+```
+--space-1: 4px
+--space-2: 8px
+--space-3: 12px
+--space-4: 16px
+--space-5: 20px
+--space-6: 24px   ← gap padrão
+--space-8: 32px
+--space-10: 40px
+--space-12: 48px
+--space-16: 64px
+--space-20: 80px
+--space-24: 96px  ← padding-block de seções
+```
+
+### 3.4 Breakpoints
+
+```css
+/* Mobile-first */
+--bp-sm: 480px;   /* mobile grande */
+--bp-md: 640px;   /* tablet pequeno */
+--bp-lg: 1024px;  /* tablet/desktop pequeno */
+--bp-xl: 1280px;  /* desktop */
+--bp-2xl: 1536px; /* desktop grande */
+```
+
+```css
+@media (max-width: 1024px) { .grid-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .grid-cards { grid-template-columns: 1fr; } }
+```
+
+---
+
+## 4. Componentes
+
+### 4.1 Navbar
+
+- **Altura**: `80px` desktop / `64px` mobile
+- **Posição**: `sticky; top: 0; z-index: 50`
+- **Background**: `#171717` no topo; `rgba(23,23,23,0.92)` com `backdrop-filter: blur(8px)` ao rolar
+- **Borda inferior**: `1px solid rgba(255,255,255,0.08)` quando scrolled
+- **Logo**: SVG, altura `40–48px`
+- **Itens**: Início · Sobre nós · Cardápio · Depoimentos · Eventos · Franquias · Contato
+- **Espaçamento entre itens**: `gap: 32px` (desktop)
+- **Tipografia**: 14px, peso 500, `letter-spacing: 0.04em`, uppercase opcional
+- **Cor**: `#FFF` → hover `#BE1522` (`transition: color 200ms ease`)
+- **Mobile**: menu hamburger, drawer full-screen com fundo `#171717`
+
+```css
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 32px;
+  background: #171717;
+  transition: background 200ms ease, box-shadow 200ms ease;
+}
+.navbar.scrolled {
+  background: rgba(23, 23, 23, 0.92);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+.navbar a { color: #fff; transition: color .2s ease; }
+.navbar a:hover { color: #BE1522; }
+```
+
+### 4.2 Hero Section
+
+- **Layout**: full-bleed com imagem de fundo (foto da pizza/restaurante) + overlay escuro
+- **Min-height**: `90vh` desktop / `75vh` mobile
+- **Alinhamento**: conteúdo centralizado horizontal e vertical (flex column)
+- **Eyebrow**: "DESDE 1917", vermelho, letter-spacing `0.15em`
+- **Título**: "Bem-vindo à Babbo Giovanni 🍕", peso 700, `clamp(48px, 6vw, 72px)`
+- **Subtítulo**: 18–20px, `#CCCCCC`, max-width `640px`
+- **CTA primário**: "Peça aqui" (botão vermelho)
+- **CTA secundário (opcional)**: "Ver cardápio" (botão outline)
+- **Espaçamento**: gap vertical de `24px` entre eyebrow → título → subtítulo → CTAs
+
+```html
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="eyebrow">Desde 1917</span>
+    <h1>Bem-vindo à Babbo Giovanni 🍕</h1>
+    <p class="lead">Mais de 100 anos servindo a tradição da pizza italiana em São Paulo.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#pedir">Peça aqui</a>
+      <a class="btn btn-outline" href="#cardapio">Ver cardápio</a>
+    </div>
+  </div>
+</section>
+```
+
+### 4.3 Seção "Sobre / História"
+
+- 2 colunas: imagem (esquerda) + texto (direita) → empilha em mobile
+- `gap: 48px`, `padding-block: 96px`
+- Texto longo de storytelling, `max-width: 560px`, line-height `1.7`
+- Imagem com `border-radius: 12px` e `box-shadow: 0 12px 40px rgba(0,0,0,0.4)`
+
+### 4.4 Cards de Produto / Cardápio
+
+- Grid 3 colunas, gap `24px`
+- Card: fundo `#1F1F1F`, `border-radius: 12px`, `overflow: hidden`
+- Imagem topo `aspect-ratio: 4/3`, `object-fit: cover`
+- Padding interno: `20px`
+- Título: 20px / 600
+- Descrição: 14px / 400 / `#CCCCCC`
+- Hover: `transform: translateY(-4px)` + `box-shadow: 0 12px 24px rgba(0,0,0,0.4)`
+- Transição: `all 250ms ease`
+
+```css
+.card {
+  background: #1F1F1F;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, .4);
+}
+.card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.card-body { padding: 20px; }
+```
+
+### 4.5 Depoimentos (Testimonials)
+
+- 5 estrelas (★) em `#FFC107` ou `#BE1522`
+- Card vertical: aspas decorativas grandes em vermelho
+- Nome em peso 600, cidade/data em 13px `#888`
+
+### 4.6 Seção de Franquia / CTA Final
+
+- Fundo vermelho `#BE1522` ou imagem com overlay
+- Título grande branco, subtítulo, botão branco com texto vermelho
+- `padding-block: 120px`, alinhamento centralizado
+
+### 4.7 Botões
+
+```css
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background 200ms ease, transform 200ms ease,
+              box-shadow 200ms ease, color 200ms ease;
+  text-decoration: none;
+}
+
+/* Primário */
+.btn-primary {
+  background: #BE1522;
+  color: #FFFFFF;
+}
+.btn-primary:hover {
+  background: #8E0F19;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(190, 21, 34, 0.35);
+}
+.btn-primary:active { transform: translateY(0); }
+
+/* Outline */
+.btn-outline {
+  background: transparent;
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+}
+.btn-outline:hover {
+  background: #FFFFFF;
+  color: #171717;
+}
+
+/* WhatsApp flutuante */
+.btn-whatsapp {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 30px;
+  background: #25D366;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  display: grid;
+  place-items: center;
+  z-index: 60;
+}
+```
+
+### 4.8 Inputs e Formulários
+
+- **Container do form**: `background: #454545; border: 2px solid #BE1522; border-radius: 10px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 600px`
+- **Label**: 14px / 500 / branco, `margin-bottom: 10px`
+- **Input/Select/Textarea**: padding `8px 10px`, `border-radius: 6px`, `border: 1px solid rgba(255,255,255,0.2)`, fundo `#2A2A2A`, cor branca
+- **Focus**: `outline: none; border-color: #BE1522; box-shadow: 0 0 5px rgba(245, 54, 0, 0.5)`
+- **Botão submit**: `padding: 10px 15px; background: #2A2A2A; color: #fff; border-radius: 6px`. Hover: `background: #BE1522`
+- **Mobile**: padding do form reduz para `15px`
+
+```css
+.form {
+  background: #454545;
+  border: 2px solid #BE1522;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 600px;
+  margin-inline: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.form .field { margin-bottom: 15px; }
+.form label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+}
+.form input,
+.form select,
+.form textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #2A2A2A;
+  color: #fff;
+  font-size: 15px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: #BE1522;
+  box-shadow: 0 0 5px rgba(245, 54, 0, 0.5);
+}
+.form button[type="submit"] {
+  padding: 10px 15px;
+  background: #2A2A2A;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+.form button[type="submit"]:hover { background: #BE1522; }
+
+@media (max-width: 640px) { .form { padding: 15px; } }
+```
+
+### 4.9 Footer
+
+- Background `#0F0F0F` (mais escuro que body)
+- Padding-block `64px`
+- 3–4 colunas: logo + descrição, links, contato, redes sociais
+- Texto: 14px / `#CCCCCC`
+- Copyright separado por borda superior `1px solid rgba(255,255,255,0.08)`
+
+---
+
+## 5. CSS / Tailwind Equivalente
+
+### 5.1 Hero
+
+```html
+<section class="relative flex min-h-[90vh] items-center justify-center
+                bg-[#171717] bg-[url('/hero.jpg')] bg-cover bg-center">
+  <div class="absolute inset-0 bg-gradient-to-b from-black/20 to-black/85"></div>
+  <div class="relative z-10 mx-auto max-w-3xl px-6 text-center">
+    <span class="text-xs font-semibold uppercase tracking-[0.15em] text-[#BE1522]">
+      Desde 1917
+    </span>
+    <h1 class="mt-4 text-5xl font-bold leading-[1.1] tracking-tight text-white
+               md:text-6xl lg:text-7xl">
+      Bem-vindo à Babbo Giovanni 🍕
+    </h1>
+    <p class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-neutral-300">
+      Mais de 100 anos servindo a tradição da pizza italiana em São Paulo.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a href="#pedir"
+         class="rounded-lg bg-[#BE1522] px-7 py-3.5 font-semibold text-white
+                shadow-lg transition hover:-translate-y-0.5
+                hover:bg-[#8E0F19] hover:shadow-red-900/40">
+        Peça aqui
+      </a>
+      <a href="#cardapio"
+         class="rounded-lg border-2 border-white px-7 py-3.5 font-semibold text-white
+                transition hover:bg-white hover:text-[#171717]">
+        Ver cardápio
+      </a>
+    </div>
+  </div>
+</section>
+```
+
+### 5.2 Card de Produto
+
+```html
+<article class="group overflow-hidden rounded-xl bg-[#1F1F1F]
+                transition duration-300 hover:-translate-y-1
+                hover:shadow-2xl hover:shadow-black/40">
+  <img src="/pizza.jpg" alt="" class="aspect-[4/3] w-full object-cover" />
+  <div class="p-5">
+    <h3 class="text-xl font-semibold text-white">Margherita</h3>
+    <p class="mt-2 text-sm leading-relaxed text-neutral-300">
+      Molho de tomate, muçarela de búfala, manjericão fresco e azeite extra-virgem.
+    </p>
+    <div class="mt-4 flex items-center justify-between">
+      <span class="text-lg font-semibold text-[#BE1522]">R$ 79,90</span>
+      <button class="rounded-md bg-[#BE1522] px-4 py-2 text-sm font-semibold text-white
+                     transition hover:bg-[#8E0F19]">
+        Pedir
+      </button>
+    </div>
+  </div>
+</article>
+```
+
+### 5.3 Navbar
+
+```html
+<header class="sticky top-0 z-50 h-20 border-b border-white/0
+               bg-[#171717] backdrop-blur transition
+               data-[scrolled=true]:border-white/10
+               data-[scrolled=true]:bg-[#171717]/90">
+  <nav class="mx-auto flex h-full max-w-7xl items-center justify-between px-6">
+    <a href="/" class="flex items-center gap-2">
+      <img src="/logo.svg" alt="Babbo Giovanni" class="h-10" />
+    </a>
+    <ul class="hidden items-center gap-8 md:flex">
+      <li><a class="text-sm font-medium text-white transition hover:text-[#BE1522]" href="#sobre">Sobre nós</a></li>
+      <li><a class="text-sm font-medium text-white transition hover:text-[#BE1522]" href="#cardapio">Cardápio</a></li>
+      <li><a class="text-sm font-medium text-white transition hover:text-[#BE1522]" href="#depoimentos">Depoimentos</a></li>
+      <li><a class="text-sm font-medium text-white transition hover:text-[#BE1522]" href="#franquias">Franquias</a></li>
+    </ul>
+    <a href="#pedir"
+       class="rounded-lg bg-[#BE1522] px-5 py-2.5 text-sm font-semibold text-white
+              transition hover:bg-[#8E0F19]">
+      Peça aqui
+    </a>
+  </nav>
+</header>
+```
+
+### 5.4 Form
+
+```html
+<form class="mx-auto max-w-xl rounded-[10px] border-2 border-[#BE1522]
+             bg-[#454545] p-5 shadow-[0_4px_10px_rgba(0,0,0,0.1)]">
+  <div class="mb-4">
+    <label class="mb-2 block text-sm font-medium text-white">Nome</label>
+    <input
+      class="w-full rounded-md border border-white/20 bg-[#2A2A2A] px-3 py-2 text-white
+             outline-none transition
+             focus:border-[#BE1522] focus:shadow-[0_0_5px_rgba(245,54,0,0.5)]"
+    />
+  </div>
+  <button class="w-full rounded-md bg-[#2A2A2A] px-4 py-2.5 font-semibold text-white
+                 transition hover:bg-[#BE1522]">
+    Enviar
+  </button>
+</form>
+```
+
+---
+
+## 6. Tokens de Design
+
+```css
+:root {
+  /* === Cores principais === */
+  --primary: #BE1522;
+  --primary-dark: #8E0F19;
+  --secondary: #171717;
+  --background: #171717;
+  --surface: #1F1F1F;
+  --surface-2: #2A2A2A;
+  --surface-3: #454545;
+
+  /* === Texto === */
+  --text: #FFFFFF;
+  --text-muted: #CCCCCC;
+  --text-subtle: #888888;
+
+  /* === Bordas / divisores === */
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.2);
+
+  /* === Estados === */
+  --success: #28A745;
+  --danger: #D9534F;
+  --focus: #2196F3;
+  --whatsapp: #25D366;
+
+  /* === Sombras === */
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.4);
+  --shadow-red: 0 8px 20px rgba(190, 21, 34, 0.35);
+  --shadow-focus: 0 0 5px rgba(245, 54, 0, 0.5);
+
+  /* === Tipografia === */
+  --font-sans: "Halcom", -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --fs-display: clamp(48px, 6vw, 72px);
+  --fs-h1: 42px;
+  --fs-h2: 36px;
+  --fs-h3: 28px;
+  --fs-h4: 22px;
+  --fs-h5: 20px;
+  --fs-body-l: 18px;
+  --fs-body: 16px;
+  --fs-body-s: 14px;
+  --fs-caption: 13px;
+
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --lh-tight: 1.15;
+  --lh-snug: 1.25;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.6;
+  --lh-loose: 1.7;
+
+  --ls-tight: -0.02em;
+  --ls-normal: 0;
+  --ls-wide: 0.02em;
+  --ls-wider: 0.15em;
+
+  /* === Espaçamento === */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* === Layout === */
+  --content-size: 800px;
+  --wide-size: 1200px;
+  --form-size: 600px;
+  --container-pad: clamp(16px, 4vw, 32px);
+
+  /* === Raios === */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+  --radius-pill: 9999px;
+  --radius-circle: 50%;
+
+  /* === Transições === */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --t-fast: 150ms var(--ease);
+  --t-base: 200ms var(--ease);
+  --t-slow: 300ms var(--ease);
+
+  /* === Z-index === */
+  --z-base: 1;
+  --z-sticky: 50;
+  --z-floating: 60;
+  --z-modal: 100;
+}
+
+/* Reset + base */
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Utilitários globais */
+.container {
+  max-width: var(--wide-size);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+.section { padding-block: var(--space-24); }
+@media (max-width: 640px) {
+  .section { padding-block: var(--space-16); }
+}
+```
+
+---
+
+## 7. Notas de Implementação
+
+1. **Fonte Halcom**: é proprietária. Em projetos sem licença, substitua por **Poppins**, **Manrope** ou **Plus Jakarta Sans** — todas mantêm o caráter geométrico-amigável.
+2. **Tema escuro nativo**: a paleta toda é dark; não há toggle de light mode na original.
+3. **Ícones**: a página usa SVGs custom (logo) e emojis pontuais (🍕). Para um clone, use Lucide ou Phosphor.
+4. **Acessibilidade**: contraste do `#BE1522` sobre `#171717` ≈ 4.97:1 (passa AA para texto grande). Para corpo pequeno, prefira branco sobre vermelho.
+5. **Animações**: leves — apenas `translateY` em hover (-1 a -4px) e fade/blur em scroll. Nada de parallax pesado.
+6. **WhatsApp flutuante**: presente em todo o site, posição fixed bottom-right.
+7. **Estrutura WordPress**: a original usa blocos do WP. Para um clone moderno, prefira Next.js + Tailwind ou Astro.
+
+---
+
+## 8. Checklist de Reprodução
+
+- [ ] Aplicar tokens CSS do bloco `:root`
+- [ ] Configurar fonte Halcom (ou substituta) com pesos 300/400/500/600/700
+- [ ] Montar navbar sticky com mudança de fundo no scroll
+- [ ] Hero full-bleed com overlay gradient e CTA duplo
+- [ ] Seção "Sobre" 2 colunas (imagem + texto)
+- [ ] Grid de cardápio com cards hover-lift
+- [ ] Carousel/grid de depoimentos
+- [ ] Seção franquias com fundo vermelho ou imagem+overlay
+- [ ] Formulário estilizado com borda vermelha + focus glow
+- [ ] Footer escuro com 3–4 colunas
+- [ ] Botão WhatsApp flutuante
+- [ ] Validar breakpoints em 480 / 640 / 1024 / 1280
