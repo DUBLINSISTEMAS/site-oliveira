@@ -208,22 +208,9 @@
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             stats.classList.add('in-view');
-            // 60+ / 40 / 4.9★ — anima cada um
+            // anima apenas o counter de sabores (items[1]); ano e horário são estáticos
             const items = stats.querySelectorAll('strong');
-            if (items[0]) animateNumber(items[0], 60, '+');
-            if (items[1]) animateNumber(items[1], 40, '');
-            if (items[2]) {
-              // valor decimal
-              const start = performance.now();
-              const dur = 1400;
-              const tick = (now) => {
-                const t = Math.min(1, (now - start) / dur);
-                const eased = 1 - Math.pow(1 - t, 3);
-                items[2].textContent = (4.9 * eased).toFixed(1) + '★';
-                if (t < 1) requestAnimationFrame(tick);
-              };
-              requestAnimationFrame(tick);
-            }
+            if (items[1]) animateNumber(items[1], 30, '+');
             statsIO.unobserve(stats); // só uma vez
           }
         });
